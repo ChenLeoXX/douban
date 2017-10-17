@@ -4,7 +4,7 @@ getData()
 function getData() {
   if (lock) return
   lock = true
-  $('.loading').css('display','block')
+  $('.loading').show()
   $.ajax({
     url: 'http://api.douban.com/v2/movie/top250',
     type: 'GET',
@@ -17,9 +17,10 @@ function getData() {
     index += 20
     retData(data)
     lock = false
-    $('.loading').css('display','none')
+    $('.loading').hide()
   }).fail(function () {
     console.log('error')
+    $('.loading').hide()
     lock = false
   })
 }
@@ -76,7 +77,7 @@ function retData(data) {
     $node.find('.type').text(film.genres.join(' /'))
     $node.find('.actor').text(actor.slice(0, -1))
     $node.find('.director').text(film.directors[0].name)
-    $('.rank').append($node)
+    $('.container').append($node)
   })
 }
 //监听滚动
