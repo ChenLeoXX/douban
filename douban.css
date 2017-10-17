@@ -1,0 +1,104 @@
+/* css reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+   background: #fff;
+   font-size: 12px;
+   line-height: 1.1;
+   height:100%;
+}
+a {
+  text-decoration: none;
+  display: block;
+  color: #333;
+}
+ul,
+li {
+  list-style: none;
+}
+.clearfix::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+/* common css */
+#content {
+  position: relative;
+  height: calc(100% - 50px);
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.rank {
+  padding: 10px;
+}
+  .film {
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(190, 190, 190);
+  }
+  .pic >img {
+    width: 70px;
+    float:left;
+  }
+  .extro {
+    margin-top: 7px;
+    color: rgb(145, 143, 143);
+  }
+.info {
+  padding-left: 80px;
+}
+.title {
+  font-size: 16px;
+}
+.score {
+  color: rgb(236, 116, 18);
+}
+#tabs {
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  width:100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+.tab {
+  color:rgb(107, 107, 107);
+}
+.tab span{
+  display: block;
+}
+.active {
+  color: rgb(236, 116, 18);
+}
+#content section {
+  position: absolute;
+  width:100%;
+  display: none;
+}
+#content>:first-child {
+  display: block;
+}
+/* 加载状态 */
+.loading {
+  text-align: center;
+  /* display: none; */
+}
+.loading .iconfont {
+  display:inline-block;
+ font-size: 25px;
+  animation: 1s rotate linear infinite;
+}
+@keyframes rotate {
+ 0%{
+   transform: rotate(0deg);
+ }
+  100% {
+ transform: rotate(360deg);
+  }
+}
+
