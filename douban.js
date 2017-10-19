@@ -156,7 +156,6 @@ var top250 = {
     data.subjects.forEach(function (film) {
       _this.$ct.append(createNode.Node(film))
     })
-
   }
 }
 
@@ -227,6 +226,9 @@ var searchMovie = {
   },
   render: function (data) {
     var _this = this
+    if(data.total === 0) {
+      return this.$searchPage.html('<h2 style=text-align:center;margin-top:50px;>未搜索到相关结果~请换个关键词</h2>')
+    }
     data.subjects.forEach(function (film) {
         _this.$searchPage.append(createNode.Node(film))
     })
@@ -236,7 +238,7 @@ var searchMovie = {
 var createNode = {
   Node: function (film) {
     var str =
-      `<a href="">
+      `<a href>
     <div class="film clearfix">
       <div class="pic">
         <img src="http://img7.doubanio.com/view/movie_poster_cover/spst/public/p480747492.jpg" alt="">
@@ -276,8 +278,9 @@ var createNode = {
     $node.find('.clect').text(film.collect_count)
     $node.find('.type').text(film.genres.join(' /'))
     $node.find('.actor').text(actor.slice(0, -1))
+    $node.find('a').attr('href',''+film.alt)
     $node.find('.director').text(function () {
-      if (film.directors[0] == !undefined) {
+      if (film.directors[0] !== undefined) {
         return film.directors[0].name
       } else {
         return '未知'
